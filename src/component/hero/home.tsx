@@ -56,7 +56,6 @@ export default function HomeHero() {
             "radial-gradient(1200px 700px at 15% 55%, rgba(120,90,255,.35), transparent 55%), radial-gradient(900px 600px at 85% 30%, rgba(240,120,255,.20), transparent 55%), radial-gradient(1200px 700px at 50% 45%, transparent 35%, rgba(0,0,0,.55) 100%)",
         }}
       />
-
       {/* Nav */}
       <header className="flex h-[84px] items-center justify-between px-5 sm:px-10 lg:px-14">
         <div className="flex items-center gap-3 select-none">
@@ -95,7 +94,6 @@ export default function HomeHero() {
           </IconButton>
         </div>
       </header>
-
       {/* Hero */}
       <main className="grid flex-1 grid-cols-1 items-center gap-8 px-5 pb-12 sm:px-10 lg:grid-cols-[1.15fr_.85fr] lg:gap-14 lg:px-14">
         {/* Left */}
@@ -149,9 +147,12 @@ export default function HomeHero() {
                     alt={c.title}
                     fill
                     className="object-cover scale-[1.05]"
-                    sizes="(max-width: 520px) 150px, 170px"
                     priority={idx === 0}
-                  />
+                    sizes="(max-width: 520px) 150px, 170px"
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
                   <div className="absolute bottom-3.5 left-3.5 right-3.5 text-left text-sm font-semibold drop-shadow-[0_10px_26px_rgba(0,0,0,.45)]">
                     {c.title}
@@ -187,7 +188,6 @@ export default function HomeHero() {
           </div>
         </section>
       </main>
-
       {/* Footer */}
       <footer className="flex items-center justify-between gap-4 px-5 pb-6 text-[13px] text-white/65 sm:px-10 lg:px-14">
         <div className="flex items-center gap-2">

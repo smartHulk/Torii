@@ -20,11 +20,12 @@ function formatDateFR(iso: string) {
   }).format(d);
 }
 
-export default async function ChallengePage({
-  searchParams,
-}: {
-  searchParams?: { page?: string; limit?: string };
-}) {
+export default async function ChallengePage(
+  props: {
+    searchParams?: Promise<{ page?: string; limit?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const page = toInt(searchParams?.page, 1);
   const limit = toInt(searchParams?.limit, 50);
 
