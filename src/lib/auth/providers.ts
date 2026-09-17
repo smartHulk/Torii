@@ -15,16 +15,26 @@ export const providers = [
       const password = credentials?.password;
       if (!email || !password) return null;
 
+  console.log("Attempting to log in with email:", email);
+
   const loginResponse = await fetch(`${process.env.API_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
+   if (loginResponse.ok) {
+    const errorText = await loginResponse.text();
+    console.log("Me request successful:", loginResponse.status, loginResponse.statusText, errorText);
+  }
+
   if (!loginResponse.ok) {
     const errorText = await loginResponse.text();
+    console.log("Me request failed:", loginResponse.status, loginResponse.statusText, errorText);
     throw new Error(`Login failed ${loginResponse.status}: ${errorText}`);
   }
+
+
 
   const loginData = (await loginResponse.json()) as LoginResponse;
       
@@ -37,8 +47,14 @@ export const providers = [
         }
       });
 
+      if (meResponse.ok) {
+        const errorText = await meResponse.text();
+        console.log("Me request successful:", meResponse.status, meResponse.statusText, errorText);
+      }
+
       if (!meResponse.ok) {
         const errorText = await meResponse.text();
+        console.log("Me request failed:", meResponse.status, meResponse.statusText, errorText);
         throw new Error(`Login failed ${meResponse.status}: ${errorText}`);
       }
 

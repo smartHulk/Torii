@@ -5,6 +5,11 @@ export async function loginUser(email: string, password: string) {
     body: JSON.stringify({ email, password }),
   });
 
+  if (res.ok) {
+    console.log("Login successful:", res.status, res.statusText);
+  }
+
+
   if (!res.ok) {
     throw new Error("Invalid credentials");
   }

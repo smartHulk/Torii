@@ -1,0 +1,4 @@
+allowBuilds:
+  '@prisma/client': true
+  sharp: true
+  unrs-resolver: true
